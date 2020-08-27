@@ -4,5 +4,5 @@ This is a hackathon project developed as a submission for DocuSign Good Code Hac
 
 ## Tentative Design
 Using DocuSign's APIs:
-  - eSignature API: 
-  - ID Verification API: 
+  - eSignature API: Requesting eSignatures, automating forms, and tracking documents.
+  - ID Evidence API: Using ID Verification (IDV) to retrieve the stored data while verifying a signer’s ID.
