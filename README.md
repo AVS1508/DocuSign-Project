@@ -6,12 +6,8 @@ This is a hackathon project developed as a submission for DocuSign Good Code Hac
 
 ## Tentative Design ##
 
-### DocuSign's APIs ###
-
-- eSignature API: Requesting eSignatures, automating forms, and tracking documents.
-- ID Evidence API: Using ID Verification (IDV) to retrieve the stored data while verifying a signer’s ID.
-
 ### Technologies Used ###
 
+- DocuSign's eSignature API: Requesting eSignatures, automating forms, and tracking documents.
 - Django
 - SQL DBMS (SQLite? MySQL?)
