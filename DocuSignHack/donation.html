@@ -27,10 +27,126 @@
       integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
       crossorigin="anonymous"
     ></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.5/jspdf.min.js"></script>
+    <script>
+      (function () {
+        var form = $(".form"),
+          cache_width = form.width(),
+          a4 = [595.28, 841.89];
+
+        $("#submitForm").on("click", function () {
+          $(".form").scrollTop(0);
+          createPDF();
+        });
+
+        function createPDF() {
+          getCanvas().then(function (canvas) {
+            var img = canvas.toDataURL("image/png"),
+              doc = new jsPDF({
+                unit: "px",
+                format: "a4",
+              });
+            doc.addImage(img, "JPEG", 20, 20);
+            doc.save("Form.pdf");
+            form.width(cache_width);
+          });
+        }
+
+        // create canvas object
+        function getCanvas() {
+          form.width(a4[0] * 1.33333 - 80).css("max-width", "none");
+          return html2canvas(form, {
+            imageTimeout: 2000,
+            removeContainer: true,
+          });
+        }
+      })();
+    </script>
+    <script>
+      /*
+       * jQuery helper plugin for examples and tests
+       */
+      (function ($) {
+        $.fn.html2canvas = function (options) {
+          var date = new Date(),
+            $message = null,
+            timeoutTimer = false,
+            timer = date.getTime();
+          html2canvas.logging = options && options.logging;
+          html2canvas.Preload(
+            this[0],
+            $.extend(
+              {
+                complete: function (images) {
+                  var queue = html2canvas.Parse(this[0], images, options),
+                    $canvas = $(html2canvas.Renderer(queue, options)),
+                    finishTime = new Date();
+
+                  $canvas
+                    .css({ position: "absolute", left: 0, top: 0 })
+                    .appendTo(document.body);
+                  $canvas.siblings().toggle();
+
+                  $(window).click(function () {
+                    if (!$canvas.is(":visible")) {
+                      $canvas.toggle().siblings().toggle();
+                      throwMessage("Canvas Render visible");
+                    } else {
+                      $canvas.siblings().toggle();
+                      $canvas.toggle();
+                      throwMessage("Canvas Render hidden");
+                    }
+                  });
+                  throwMessage(
+                    "Screenshot created in " +
+                      (finishTime.getTime() - timer) / 1000 +
+                      " seconds<br />",
+                    4000
+                  );
+                },
+              },
+              options
+            )
+          );
+
+          function throwMessage(msg, duration) {
+            window.clearTimeout(timeoutTimer);
+            timeoutTimer = window.setTimeout(function () {
+              $message.fadeOut(function () {
+                $message.remove();
+              });
+            }, duration || 2000);
+            if ($message) $message.remove();
+            $message = $("<div ></div>")
+              .html(msg)
+              .css({
+                margin: 0,
+                padding: 10,
+                background: "#000",
+                opacity: 0.7,
+                position: "fixed",
+                top: 10,
+                right: 10,
+                fontFamily: "Tahoma",
+                color: "#fff",
+                fontSize: 12,
+                borderRadius: 12,
+                width: "auto",
+                height: "auto",
+                textAlign: "center",
+                textDecoration: "none",
+              })
+              .hide()
+              .fadeIn()
+              .appendTo("body");
+          }
+        };
+      })(jQuery);
+    </script>
   </head>
   <body>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
-      <a class="navbar-brand" href="/">EForm</a>
+      <a class="navbar-brand" href="index.html">EForm</a>
       <button
         class="navbar-toggler"
         type="button"
@@ -46,13 +162,13 @@
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
           <li class="nav-item active">
-            <a class="nav-link" href="/">Home </a>
+            <a class="nav-link" href="index.html">Home </a>
           </li>
           <li class="nav-item active">
-            <a class="nav-link" href="/volunteer">Volunteer</a>
+            <a class="nav-link" href="volunteer.html">Volunteer</a>
           </li>
           <li class="nav-item active">
-            <a class="nav-link" href="/donate">Donation</a>
+            <a class="nav-link" href="donation.html">Donation</a>
           </li>
         </ul>
       </div>
@@ -67,7 +183,7 @@
       >
         <span><h1>Donation Form</h1></span>
       </div>
-      <form class="" action="" method="post">
+      <form class="form">
         <form>
           <!-- Name of Applicant -->
           <div class="form-group row">
@@ -474,7 +590,7 @@
             "
           >
             <div class="col-sm-12">
-              <button type="submit" class="btn btn-primary">
+              <button type="submit" class="btn btn-primary" id="submitForm">
                 Submit Application
               </button>
             </div>

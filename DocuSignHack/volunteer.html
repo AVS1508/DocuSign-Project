@@ -13,7 +13,7 @@
 
     <!-- JS, Popper.js, and jQuery -->
     <script
-      src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+      src="https://code.jquery.com/jquery-3.5.1.min.js"
       integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
       crossorigin="anonymous"
     ></script>
@@ -27,10 +27,39 @@
       integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
       crossorigin="anonymous"
     ></script>
+    <script>
+      const VolunteerFormSubmit = () => {
+        $.ajax({
+          url: "./cgi-bin/process.py",
+          type: "GET",
+          data: {
+            prefixName: $("#prefixName"),
+            firstName: $("#firstName"),
+            lastName: $("#lastName"),
+            emailID: $("#emailID"),
+            DOB: $("#DOB"),
+            phoneNumber: $("#phoneNumber"),
+            countryName: $("#countryName"),
+            volunteerHospitals: $("#volunteerHospitals"),
+            volunteerOrphanages: $("#volunteerOrphanages"),
+            volunteerSchools: $("#volunteerSchools"),
+            volunteerComputers: $("#volunteerComputers"),
+            volunteerCommunity: $("#volunteerCommunity"),
+            volunteerArts: $("#volunteerArts"),
+            remoteLocal: $("#remoteLocal"),
+            inPerson: $("#inPerson"),
+            remoteInternational: $("#remoteInternational"),
+          },
+          success: function (response) {
+            console.log("successful");
+          },
+        });
+      };
+    </script>
   </head>
   <body>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
-      <a class="navbar-brand" href="/">EForm</a>
+      <a class="navbar-brand" href="index.html">EForm</a>
       <button
         class="navbar-toggler"
         type="button"
@@ -46,13 +75,13 @@
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
           <li class="nav-item active">
-            <a class="nav-link" href="/">Home </a>
+            <a class="nav-link" href="index.html">Home </a>
           </li>
           <li class="nav-item active">
-            <a class="nav-link" href="/volunteer">Volunteer</a>
+            <a class="nav-link" href="volunteer.html">Volunteer</a>
           </li>
           <li class="nav-item active">
-            <a class="nav-link" href="/donate">Donation</a>
+            <a class="nav-link" href="donation.html">Donation</a>
           </li>
         </ul>
       </div>
@@ -66,8 +95,8 @@
       >
         <span><h1>Application for Volunteering</h1></span>
       </div>
-      <form class="" action="" method="post">
-        <form>
+      <form id="volunteeringForm">
+        <form action="./cgi-bin/process.py" method="get">
           <!-- Name of Applicant -->
           <div class="form-group row">
             <label for="inputName" class="col-sm-2 col-form-label">Name*</label>
@@ -474,7 +503,7 @@
                   id="volunteerArts"
                 />
                 <label class="form-check-label" for="volunteerArts">
-                  Arts & Education
+                  Arts & Entertainment
                 </label>
               </div>
             </div>
@@ -488,21 +517,17 @@
                 <input
                   class="form-check-input"
                   type="checkbox"
-                  id="volunteerHospitals"
+                  id="remoteLocal"
                 />
-                <label class="form-check-label" for="volunteerHospitals">
+                <label class="form-check-label" for="remoteLocal">
                   Remote (Local)
                 </label>
               </div>
             </div>
             <div class="col-sm-3">
               <div class="form-check">
-                <input
-                  class="form-check-input"
-                  type="checkbox"
-                  id="volunteerOrphanages"
-                />
-                <label class="form-check-label" for="volunteerOrphanages">
+                <input class="form-check-input" type="checkbox" id="inPerson" />
+                <label class="form-check-label" for="inPerson">
                   In-Person
                 </label>
               </div>
@@ -512,9 +537,9 @@
                 <input
                   class="form-check-input"
                   type="checkbox"
-                  id="volunteerSchools"
+                  id="remoteInternational"
                 />
-                <label class="form-check-label" for="volunteerSchools">
+                <label class="form-check-label" for="remoteInternational">
                   Remote (International)
                 </label>
               </div>
@@ -531,7 +556,12 @@
             "
           >
             <div class="col-sm-12">
-              <button type="submit" class="btn btn-primary">
+              <button
+                type="submit"
+                class="btn btn-primary"
+                value="submit"
+                onclick="VolunteerFormSubmit()"
+              >
                 Submit Application
               </button>
             </div>
