@@ -12,10 +12,9 @@ class Config:
 
     # General Config
     SECRET_KEY = environ.get('SECRET_KEY')
-    WTF_CSRF_SECRET_KEY = environ.get('WTF_CSRF_SECRET_KEY')
     FLASK_APP = environ.get('FLASK_APP')
     FLASK_ENV = environ.get('FLASK_ENV')
-    WTF_CSRF_ENABLED = True
+    WTF_CSRF_ENABLED = False
 
     # Static Assets
     STATIC_FOLDER = 'static'
