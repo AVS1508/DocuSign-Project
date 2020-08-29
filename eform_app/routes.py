@@ -32,3 +32,6 @@ def pdf_donate():
     response.headers['Content-Type'] = 'application/pdf'
     response.headers['Content-Disposition'] = 'inline; filename=Donation-Form.pdf'
     return response
+
+if __name__ == '__main__':
+    app.run(threaded=False, port=5000)
