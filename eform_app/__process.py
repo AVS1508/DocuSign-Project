@@ -20,3 +20,10 @@ print("</body></html>")
 # }
 
 # pdfkit.from_url('','out.pdf', options=options)
+
+from flask import Flask, render_template, make_reponse
+import pdfkit
+
+app = Flask(__name__)
+
+@app.route('/<name>/<location>')

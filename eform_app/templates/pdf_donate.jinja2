@@ -1,0 +1,75 @@
+{% extends 'pdflayout.jinja2' %}
+
+{% block styles %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/index.css') }}" rel="stylesheet" type="text/css">
+{% endblock %}
+
+{% block content %}
+<div style="display:flex; justify-content: center; align-items: center;">
+  <div style="text-align:left;">
+    <h1 style="font-size:46px;text-align:center;">Donation Form</h1>
+    <br/>
+    <div class="container" style='font-size:24px;'>
+      <div class="row">
+        {% if data.prefixName != 'NIL' %}
+        <div class="col-sm-12">
+          <strong>Name:</strong> {% set my_str = data.prefixName+" "+data.firstName+" "+data.lastName %}{{my_str}}
+        </div>
+        {% else %}
+        <div class="col-sm-12">
+          Name: {% set my_str = data.firstName+" "+data.lastName %}{{my_str}}
+        </div>
+        {% endif %}
+      </div>
+      <br/>
+      <div class="row">
+        <div class="col-sm-12">
+          <strong>Email:</strong> {{data.emailID}}
+        </div>
+      </div>
+      <br/>
+      {% if data.DOB != None %}
+      <div class="row">
+        <div class="col-sm-12">
+          <strong>Date of Birth:</strong> {{data.DOB}}
+        </div>
+      </div>
+      {% endif %}
+      <br/>
+      {% if data.phoneNumber != None %}
+      <div class="row">
+        <div class="col-sm-12">
+          <strong>Phone Number:</strong> {{data.phoneNumber}}
+        </div>
+      </div>
+      {% endif %}
+      <br/>
+      <div class="row">
+        <div class="col-sm-12">
+          <strong>Country of Residence:</strong> {{data.countryName}}
+        </div>
+      </div>
+      <br/>
+      <div class="row">
+        <div class="col-sm-12">
+        {% set donation = data.donationCurrency + " " + data.donationAmount %}
+          <strong>Donation:</strong> {{donation}}
+        </div>
+      </div>
+      <br/>
+      <div class="row">
+        <div class="col-sm-12">
+          <strong>Donation Causes:</strong>  {{data.donationCause}}
+        </div>
+      </div>
+      <br/>
+      <div class="row">
+        <div class="col-sm-12">
+          <strong>Donation Message:</strong> 
+          <p>{{data.donationMessage}}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

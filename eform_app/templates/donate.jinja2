@@ -9,7 +9,7 @@
   <div class="jumbotron" style="align-items: center; justify-content: center; text-align: center">
     <span><h1>Donation Form</h1></span>
   </div>
-  <form id="volunteeringForm" method="POST" action="/">
+  <form id="volunteeringForm" method="POST" action="{{url_for('pdf_donate')}}" novalidate>
     
     <!--Name of Applicant-->
     <div class="form-group row">
