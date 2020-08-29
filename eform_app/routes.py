@@ -7,7 +7,7 @@ import pdfkit
 def _get_pdfkit_config():
     if platform.system() == 'Windows':
          return pdfkit.configuration(wkhtmltopdf=os.environ.get('WKHTMLTOPDF_BINARY', 'C:\\Program Files\\wkhtmltopdf\\bin\\wkhtmltopdf.exe'))
-     else:
+    else:
          WKHTMLTOPDF_CMD = subprocess.Popen(['which', os.environ.get('WKHTMLTOPDF_BINARY', 'wkhtmltopdf')], stdout=subprocess.PIPE).communicate()[0].strip()
          return pdfkit.configuration(wkhtmltopdf=WKHTMLTOPDF_CMD)
 
