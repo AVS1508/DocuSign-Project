@@ -27,7 +27,7 @@ def pdf_volunteer():
 @app.route('/pdf_donate/', methods=['POST'])
 def pdf_donate():
     rendered = render_template('pdf_donate.jinja2', data=request.form)
-    pdf = pdfkit.from_string(rendered, False)
+    pdf = pdfkit.from_string(rendered, False, {'enable-local-file-access': None})
     response = make_response(pdf)
     response.headers['Content-Type'] = 'application/pdf'
     response.headers['Content-Disposition'] = 'inline; filename=Donation-Form.pdf'
