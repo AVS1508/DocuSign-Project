@@ -1,0 +1,160 @@
+{% extends 'layout.jinja2' %}
+
+{% block styles %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/index.css') }}" rel="stylesheet" type="text/css">
+{% endblock %}
+
+{% block content %}
+<div class="formwrapper">
+  <div class="jumbotron" style="align-items: center; justify-content: center; text-align: center">
+    <span><h1>Donation Form</h1></span>
+  </div>
+  <form id="volunteeringForm" method="POST" action="/">
+    
+    <!--Name of Applicant-->
+    <div class="form-group row">
+      <label class="col-sm-2 col-form-label">Name*</label>
+      <div class="col-sm-2">{{ form.prefixName(class="form-control")}}
+        {% if form.prefixName.errors %}
+          <ul class="errors">
+            {% for error in form.prefixName.errors %}
+              <li>{{ error }}</li>
+            {% endfor %}
+          </ul>
+        {% endif %}
+      </div>
+      <div class="col-sm-4">{{ form.firstName(class="form-control",placeholder="First Name")}}
+        {% if form.firstName.errors %}
+          <ul class="errors">
+            {% for error in form.firstName.errors %}
+              <li>{{ error }}</li>
+            {% endfor %}
+          </ul>
+        {% endif %}
+      </div>
+      <div class="col-sm-4">{{ form.lastName(class="form-control",placeholder="Last Name")}}
+        {% if form.lastName.errors %}
+          <ul class="errors">
+            {% for error in form.lastName.errors %}
+              <li>{{ error }}</li>
+            {% endfor %}
+          </ul>
+        {% endif %}
+      </div>
+    </div>
+    <br/>
+
+    <!--Email & DOB of Applicant-->
+    <div class="form-group row">
+      <label class="col-sm-2 col-form-label">Email*</label>
+      <div class="col-sm-4">{{ form.emailID(class="form-control", placeholder="Email")}}
+        {% if form.emailID.errors %}
+          <ul class="errors">
+            {% for error in form.emailID.errors %}
+              <li>{{ error }}</li>
+            {% endfor %}
+          </ul>
+        {% endif %}
+      </div>
+      <label class="col-sm-2 col-form-label">Date of Birth</label>
+      <div class="col-sm-4">{{ form.DOB(class="form-control")}}
+        {% if form.DOB.errors %}
+          <ul class="errors">
+            {% for error in form.DOB.errors %}
+              <li>{{ error }}</li>
+            {% endfor %}
+          </ul>
+        {% endif %}
+      </div>
+    </div>
+    <br/>
+
+    <!--Phone & Country of Applicant-->
+    <div class="form-group row">
+      <label class="col-sm-2 col-form-label">Phone Number</label>
+      <div class="col-sm-4">{{ form.phoneNumber(class="form-control", placeholder="Phone Number")}}
+        {% if form.phoneNumber.errors %}
+          <ul class="errors">
+            {% for error in form.phoneNumber.errors %}
+              <li>{{ error }}</li>
+            {% endfor %}
+          </ul>
+        {% endif %}
+      </div>
+      <label class="col-sm-2 col-form-label">Residence Country*</label>
+      <div class="col-sm-4">{{ form.countryName(class="form-control")}}
+        {% if form.countryName.errors %}
+          <ul class="errors">
+            {% for error in form.countryName.errors %}
+              <li>{{ error }}</li>
+            {% endfor %}
+          </ul>
+        {% endif %}
+      </div>
+    </div>
+    <br/>
+    
+    <!--Donation Details-->
+    <div class="form-group row">
+      <label class="col-sm-2 col-form-label">Donation Currency</label>
+      <div class="col-sm-1">
+        {{ form.donationCurrency(class="form-control")}}
+        {% if form.donationCurrency.errors %}
+          <ul class="errors">
+            {% for error in form.donationCurrency.errors %}
+              <li>{{ error }}</li>
+            {% endfor %}
+          </ul>
+        {% endif %}
+      </div>
+      <label class="col-sm-2 col-form-label">Donation Amount</label>
+      <div class="col-sm-3">
+        {{ form.donationAmount(class="form-control", placeholder='0.00')}}
+        {% if form.donationAmount.errors %}
+          <ul class="errors">
+            {% for error in form.donationAmount.errors %}
+              <li>{{ error }}</li>
+            {% endfor %}
+          </ul>
+        {% endif %}
+      </div>
+      <label class="col-sm-1 col-form-label">Cause</label>
+      <div class="col-sm-3">
+        {{ form.donationCause(class="form-control")}}
+        {% if form.donationCause.errors %}
+          <ul class="errors">
+            {% for error in form.donationCause.errors %}
+              <li>{{ error }}</li>
+            {% endfor %}
+          </ul>
+        {% endif %}
+      </div>
+    </div>
+    <br/>
+    
+    <!--Donation Message-->
+    <div class="form-group row">
+      <label class="col-sm-2 col-form-label">Message</label>
+      <div class="col-sm-10">
+          {{ form.donationMessage(class="form-control", placeholder='Leave a message for your community.')}}
+            {% if form.donationMessage.errors %}
+              <ul class="errors">
+                {% for error in form.donationMessage.errors %}
+                  <li>{{ error }}</li>
+                {% endfor %}
+              </ul>
+            {% endif %}
+        </div>
+    </div>
+    <br/>
+
+    <!--Submit Button-->
+    <div class="form-group row" style="align-items: center;justify-content: center;text-align: center;">
+      <div class="col-sm-12">
+        {{form.submit(class="btn btn-primary")}}
+      </div>
+    </div>
+
+  </form>
+</div>
+{% endblock %}

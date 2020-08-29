@@ -1,10 +1,10 @@
-#!/Users/avs/@GitRepos/DocuSign-Project/bin/python3
+#!/Users/avs/@GitRepos/flask-wtform-tutorial/myenv/bin/python3
 # -*- coding: utf-8 -*-
 import re
 import sys
 
-from setuptools.command.easy_install import main
+from dotenv.cli import cli
 
 if __name__ == '__main__':
     sys.argv[0] = re.sub(r'(-script\.pyw?|\.exe)?$', '', sys.argv[0])
-    sys.exit(main())
+    sys.exit(cli())

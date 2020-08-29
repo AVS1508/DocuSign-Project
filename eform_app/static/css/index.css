@@ -1,24 +1,26 @@
-
-.logo{
+.logo {
   border-radius: 100%;
   width: 250px;
   height: 250px;
   display: block;
 
 }
-.initial{
+
+.initial {
   color: black;
   background-color: white;
 }
-body{
-  background-color: black;
-  color: white;
 
+body {
+  color: black;
+  background-color: white;
 }
-#heading{
+
+#heading {
   font-size: 125px;
   padding-left: 25px;
 }
+
 #myVideo {
   position: absolute;
   right: 0;
@@ -27,15 +29,19 @@ body{
   min-height: 100%;
   z-index: -1;
 }
-.contentHomePage{
+
+.contentHomePage {
   margin-left: 100px;
 }
-p{
+
+p {
   font-family: monospace;
   font-size: 25px;
 }
 
-.bgimg-1, .bgimg-2, .bgimg-3 {
+.bgimg-1,
+.bgimg-2,
+.bgimg-3 {
   position: relative;
   /* opacity: 0.65; */
   background-attachment: fixed;
@@ -44,18 +50,19 @@ p{
   background-size: cover;
 
 }
+
 .bgimg-1 {
   background-image: url("https://miro.medium.com/max/6668/1*CrkpS2h0AEydKvbuiWP1yA.jpeg");
   min-height: 400px;
 }
 
 .bgimg-2 {
-  background-image: url("https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcRcUFHMHqTAuUr4NKXBxlowiAgmkjkAbzojMQ&usqp=CAU");
+  background-image: url("https://images.pexels.com/photos/261621/pexels-photo-261621.jpeg");
   min-height: 400px;
 }
 
 .bgimg-3 {
-  background-image: url("https://images.indianexpress.com/2019/07/pen-1.jpg");
+  background-image: url("https://images.pexels.com/photos/372748/pexels-photo-372748.jpeg");
   min-height: 400px;
 }
 
@@ -78,7 +85,7 @@ p{
 
 }
 
-.welcometo{
+.welcometo {
   padding-left: 25px;
 }
 
@@ -91,6 +98,10 @@ p{
 
 /* Turn off parallax scrolling for tablets and phones */
 @media only screen and (max-device-width: 1024px) {
-  .bgimg-1, .bgimg-2, .bgimg-3 {
+
+  .bgimg-1,
+  .bgimg-2,
+  .bgimg-3 {
     background-attachment: scroll;
   }
+}

@@ -1,0 +1,227 @@
+{% extends 'layout.jinja2' %}
+
+{% block styles %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/index.css') }}" rel="stylesheet" type="text/css">
+{% endblock %}
+
+{% block content %}
+<div class="formwrapper">
+  <div class="jumbotron" style="align-items: center; justify-content: center; text-align: center">
+    <span><h1>Application for Volunteering</h1></span>
+  </div>
+  <form id="volunteeringForm" method="POST" action="/">
+    <!--Name of Applicant-->
+    <div class="form-group row">
+      <label class="col-sm-2 col-form-label">Name*</label>
+      <div class="col-sm-2">{{ form.prefixName(class="form-control")}}
+        {% if form.prefixName.errors %}
+          <ul class="errors">
+            {% for error in form.prefixName.errors %}
+              <li>{{ error }}</li>
+            {% endfor %}
+          </ul>
+        {% endif %}
+      </div>
+      <div class="col-sm-4">{{ form.firstName(class="form-control",placeholder="First Name")}}
+        {% if form.firstName.errors %}
+          <ul class="errors">
+            {% for error in form.firstName.errors %}
+              <li>{{ error }}</li>
+            {% endfor %}
+          </ul>
+        {% endif %}
+      </div>
+      <div class="col-sm-4">{{ form.lastName(class="form-control",placeholder="Last Name")}}
+        {% if form.lastName.errors %}
+          <ul class="errors">
+            {% for error in form.lastName.errors %}
+              <li>{{ error }}</li>
+            {% endfor %}
+          </ul>
+        {% endif %}
+      </div>
+    </div>
+    <br/>
+
+    <!--Email & DOB of Applicant-->
+    <div class="form-group row">
+      <label class="col-sm-2 col-form-label">Email*</label>
+      <div class="col-sm-4">{{ form.emailID(class="form-control", placeholder="Email")}}
+        {% if form.emailID.errors %}
+          <ul class="errors">
+            {% for error in form.emailID.errors %}
+              <li>{{ error }}</li>
+            {% endfor %}
+          </ul>
+        {% endif %}
+      </div>
+      <label class="col-sm-2 col-form-label">Date of Birth</label>
+      <div class="col-sm-4">{{ form.DOB(class="form-control")}}
+        {% if form.DOB.errors %}
+          <ul class="errors">
+            {% for error in form.DOB.errors %}
+              <li>{{ error }}</li>
+            {% endfor %}
+          </ul>
+        {% endif %}
+      </div>
+    </div>
+    <br/>
+
+    <!--Phone & Country of Applicant-->
+    <div class="form-group row">
+      <label class="col-sm-2 col-form-label">Phone Number</label>
+      <div class="col-sm-4">{{ form.phoneNumber(class="form-control", placeholder="Phone Number")}}
+        {% if form.phoneNumber.errors %}
+          <ul class="errors">
+            {% for error in form.phoneNumber.errors %}
+              <li>{{ error }}</li>
+            {% endfor %}
+          </ul>
+        {% endif %}
+      </div>
+      <label class="col-sm-2 col-form-label">Residence Country*</label>
+      <div class="col-sm-4">{{ form.countryName(class="form-control")}}
+        {% if form.countryName.errors %}
+          <ul class="errors">
+            {% for error in form.countryName.errors %}
+              <li>{{ error }}</li>
+            {% endfor %}
+          </ul>
+        {% endif %}
+      </div>
+    </div>
+    <br/>
+    
+    <!--Volunteering Avenues-->
+    <div class="form-group row">
+      <label class="col-sm-2 col-form-label">Volunteering Avenues</label>
+      <div class="col-sm-3">
+        <div class="form-check">
+          {{ form.volunteerHospitals(class="form-check-input")}}
+            {% if form.volunteerHospitals.errors %}
+              <ul class="errors">
+                {% for error in form.volunteerHospitals.errors %}
+                  <li>{{ error }}</li>
+                {% endfor %}
+              </ul>
+            {% endif %}
+          <label class="form-check-label">Hospitals</label>
+        </div>
+        <div class="form-check">
+          {{ form.volunteerOrphanages(class="form-check-input")}}
+            {% if form.volunteerOrphanages.errors %}
+              <ul class="errors">
+                {% for error in form.volunteerOrphanages.errors %}
+                  <li>{{ error }}</li>
+                {% endfor %}
+              </ul>
+            {% endif %}
+          <label class="form-check-label">Orphanages</label>
+        </div>
+      </div>
+      <div class="col-sm-3">
+        <div class="form-check">
+          {{ form.volunteerSchools(class="form-check-input")}}
+            {% if form.volunteerSchools.errors %}
+              <ul class="errors">
+                {% for error in form.volunteerSchools.errors %}
+                  <li>{{ error }}</li>
+                {% endfor %}
+              </ul>
+            {% endif %}
+          <label class="form-check-label">Schools</label>
+        </div>
+        <div class="form-check">
+          {{ form.volunteerComputers(class="form-check-input")}}
+            {% if form.volunteerComputers.errors %}
+              <ul class="errors">
+                {% for error in form.volunteerComputers.errors %}
+                  <li>{{ error }}</li>
+                {% endfor %}
+              </ul>
+            {% endif %}
+          <label class="form-check-label">Computer Classes</label>
+        </div>
+      </div>
+      <div class="col-sm-3">
+        <div class="form-check">
+          {{ form.volunteerCommunity(class="form-check-input")}}
+            {% if form.volunteerCommunity.errors %}
+              <ul class="errors">
+                {% for error in form.volunteerCommunity.errors %}
+                  <li>{{ error }}</li>
+                {% endfor %}
+              </ul>
+            {% endif %}
+          <label class="form-check-label">Community Services</label>
+        </div>
+        <div class="form-check">
+          {{ form.volunteerArts(class="form-check-input")}}
+            {% if form.volunteerArts.errors %}
+              <ul class="errors">
+                {% for error in form.volunteerArts.errors %}
+                  <li>{{ error }}</li>
+                {% endfor %}
+              </ul>
+            {% endif %}
+          <label class="form-check-label">Arts & Entertainment</label>
+        </div>
+      </div>
+    </div>
+    <br/>
+    
+    <!--Volunteering Media-->
+    <div class="form-group row">
+      <label class="col-sm-2 col-form-label">Volunteering Media</label>
+      <div class="col-sm-3">
+        <div class="form-check">
+          {{ form.volunteerRemoteLocal(class="form-check-input")}}
+            {% if form.volunteerRemoteLocal.errors %}
+              <ul class="errors">
+                {% for error in form.volunteerRemoteLocal.errors %}
+                  <li>{{ error }}</li>
+                {% endfor %}
+              </ul>
+            {% endif %}
+          <label class="form-check-label">Remote (Local)</label>
+        </div>
+      </div>
+      <div class="col-sm-3">
+        <div class="form-check">
+          {{ form.volunteerInPerson(class="form-check-input")}}
+            {% if form.volunteerInPerson.errors %}
+              <ul class="errors">
+                {% for error in form.volunteerInPerson.errors %}
+                  <li>{{ error }}</li>
+                {% endfor %}
+              </ul>
+            {% endif %}
+          <label class="form-check-label">In-Person</label>
+        </div>
+      </div>
+      <div class="col-sm-3">
+        <div class="form-check">
+          {{ form.volunteerRemoteInternational(class="form-check-input")}}
+            {% if form.volunteerRemoteInternational.errors %}
+              <ul class="errors">
+                {% for error in form.volunteerRemoteInternational.errors %}
+                  <li>{{ error }}</li>
+                {% endfor %}
+              </ul>
+            {% endif %}
+          <label class="form-check-label">Remote (International)</label>
+        </div>
+      </div>
+    </div>
+    <br/>
+
+    <!--Submit Button-->
+    <div class="form-group row" style="align-items: center;justify-content: center;text-align: center;">
+      <div class="col-sm-12">
+        {{form.submit(class="btn btn-primary")}}
+      </div>
+    </div>
+  </form>
+</div>
+{% endblock %}
