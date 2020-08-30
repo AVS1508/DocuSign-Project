@@ -4,6 +4,7 @@ from flask import current_app as app
 from .forms import DonateForm, VolunteerForm
 import pdfkit
 
+
 def _get_pdfkit_config():
     if platform.system() == 'Windows':
          return pdfkit.configuration(wkhtmltopdf=os.environ.get('WKHTMLTOPDF_BINARY', 'C:\\Program Files\\wkhtmltopdf\\bin\\wkhtmltopdf.exe'))
