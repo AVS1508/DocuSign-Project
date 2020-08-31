@@ -73,7 +73,7 @@ def pdf_donate():
     response.headers['Content-Disposition'] = 'inline; filename=Donation-Form.pdf'
     return response
 
-@app.route('/signed/', methods=['GET'])
+@app.route('/signed/', methods=['GET','POST'])
 def signed():
     return render_template('index-signed.jinja2', template='home-template')
 
