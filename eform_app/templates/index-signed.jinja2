@@ -1,0 +1,104 @@
+{% extends 'layout.jinja2' %}
+
+{% block styles %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/index.css') }}" rel="stylesheet" type="text/css">
+{% endblock %}
+
+{% block content %}
+
+<div class="initial">
+      <div class ='jumbotron'><center><h4>Form Submitted!</h4></center></div>
+      <h3 class="welcometo">Choose Your Form With Signature Here At</h3>
+      <h1 id="heading">EForm</h1>
+    </div>
+    <br />
+    <br /><br /><br /><br /><br />
+
+    <div
+      style="
+        color: #ddd;
+        background-color: #282e34;
+        text-align: center;
+        padding: 50px 80px;
+        text-align: justify;
+      "
+    >
+      <h1 style="text-align: justify">Who are we?</h1>
+      <br />
+
+      <p>
+        We aim to take forms online while retaining their efficiency. Multiple
+        forms such as contracts and DND forms require the signature of the user.
+        We use DocUsign API to fullfill this requirement.
+      </p>
+    </div>
+
+    <div class="bgimg-2">
+      <div class="caption">
+        <span
+          class="border"
+          style="background-color: #666699; font-size: 25px; color: #f7f7f7"
+          >All Forms+All Functionality</span
+        >
+      </div>
+    </div>
+
+    <div style="position: relative">
+      <div
+        style="
+          color: #ddd;
+          background-color: #282e34;
+          text-align: center;
+          padding: 50px 80px;
+          text-align: justify;
+        "
+      >
+        <h1>Here is how we work</h1>
+        <br />
+        <p>
+          Click on the desired form. Fill the form. Get the pdf. Authenticate it
+          with your signature and use it whereever you want.
+        </p>
+      </div>
+    </div>
+
+    <div class="bgimg-3">
+      <div class="caption">
+        <span
+          class="border"
+          style="background-color: #666699; font-size: 25px; color: white"
+          >EFFICIENCY</span
+        >
+      </div>
+    </div>
+
+    <div style="position: relative">
+      <div
+        style="
+          color: #ddd;
+          background-color: #282e34;
+          text-align: center;
+          padding: 50px 80px;
+          text-align: justify;
+        "
+      >
+        <h1>Scalability</h1>
+        <br />
+        <p>
+          In the future the forms can be customized and hopefully one day all
+          forms can be filled online, eliminating the need of paper and reducing
+          the risk of forgery.
+        </p>
+      </div>
+    </div>
+
+    <div class="bgimg-1">
+      <div class="caption">
+        <span
+          class="border"
+          style="background-color: #666699; font-size: 25px; color: #f7f7f7"
+          >SECURITY</span
+        >
+      </div>
+    </div>
+{% endblock %}
